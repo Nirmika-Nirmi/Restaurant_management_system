@@ -63,7 +63,7 @@ tr:last-child td { border-bottom: 0; }
   $me     = auth('admin')->user();
 @endphp
 
-{{-- Flash messages --}}
+// Flash messages
 @if (session('ok'))
   <div class="flash ok">{{ session('ok') }}</div>
 @endif
@@ -74,7 +74,7 @@ tr:last-child td { border-bottom: 0; }
   <div class="flash error">{{ $errors->first() }}</div>
 @endif
 
-{{-- ============ Add / Edit user ============ --}}
+// Add / Edit user
 <div class="panel form-panel">
   <div class="panel-head">
     <h2>{{ $isEdit ? 'Edit admin user' : 'Add admin user' }}</h2>
@@ -145,7 +145,7 @@ tr:last-child td { border-bottom: 0; }
   </form>
 </div>
 
-{{-- ============ Users list ============ --}}
+//Users list 
 <div class="panel">
   <div class="panel-head"><h2>{{ $users->count() }} admin users</h2></div>
 

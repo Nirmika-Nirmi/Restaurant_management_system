@@ -130,7 +130,7 @@ tr:last-child td { border-bottom: 0; }
 
 <div class="menu-layout">
 
-  {{--   Categories   --}}
+ 
   <aside>
     <div class="panel">
       <div class="panel-head"><h2>Categories</h2></div>
@@ -187,10 +187,10 @@ tr:last-child td { border-bottom: 0; }
     </div>
   </aside>
 
-  {{--   Items   --}}
+  
   <section>
 
-    {{-- Add / Edit form --}}
+    
     <div class="panel form-panel">
       <div class="panel-head">
         <h2>{{ $isEdit ? 'Edit menu item' : 'Add menu item' }}</h2>
@@ -292,7 +292,7 @@ tr:last-child td { border-bottom: 0; }
       </form>
     </div>
 
-    {{-- List --}}
+   
     <div class="panel">
       <div class="panel-head">
         <h2>{{ $items->count() }} {{ \Illuminate\Support\Str::plural('item', $items->count()) }}</h2>

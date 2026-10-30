@@ -8,6 +8,9 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\ReservationController;
+use App\Http\Controllers\Admin\TableController;
 
 Route::prefix('admin')->name('admin.')->group(function () {
 
@@ -78,5 +81,43 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::put('roles/{role}', [RoleController::class, 'update'])->name('roles.update');
             Route::delete('roles/{role}', [RoleController::class, 'destroy'])->name('roles.destroy');
         });
+
+
+                // Orders
+        Route::get('orders', [OrderController::class, 'index'])
+            ->middleware('permission:orders.view,admin')->name('orders');
+        Route::get('orders/{order}', [OrderController::class, 'show'])
+            ->middleware('permission:orders.view,admin')->name('orders.show');
+        Route::post('orders/{order}/status', [OrderController::class, 'updateStatus'])
+            ->middleware('permission:orders.status,admin')->name('orders.status');
+        Route::post('orders/{order}/cancel', [OrderController::class, 'cancel'])
+            ->middleware('permission:orders.manage,admin')->name('orders.cancel');
+        Route::post('orders/{order}/payment', [OrderController::class, 'markPaid'])
+            ->middleware('permission:orders.manage,admin')->name('orders.payment');
     });
+
+
+            // Reservations
+        Route::get('reservations', [ReservationController::class, 'index'])
+            ->middleware('permission:reservations.view,admin')->name('reservations');
+        Route::post('reservations', [ReservationController::class, 'store'])
+            ->middleware('permission:reservations.manage,admin')->name('reservations.store');
+        Route::get('reservations/{reservation}/edit', [ReservationController::class, 'edit'])
+            ->middleware('permission:reservations.manage,admin')->name('reservations.edit');
+        Route::put('reservations/{reservation}', [ReservationController::class, 'update'])
+            ->middleware('permission:reservations.manage,admin')->name('reservations.update');
+        Route::post('reservations/{reservation}/status', [ReservationController::class, 'updateStatus'])
+            ->middleware('permission:reservations.status,admin')->name('reservations.status');
+
+        // Tables
+        Route::get('tables', [TableController::class, 'index'])
+            ->middleware('permission:reservations.view,admin')->name('tables');
+        Route::post('tables', [TableController::class, 'store'])
+            ->middleware('permission:reservations.manage,admin')->name('tables.store');
+        Route::put('tables/{table}', [TableController::class, 'update'])
+            ->middleware('permission:reservations.manage,admin')->name('tables.update');
+        Route::post('tables/{table}/status', [TableController::class, 'setStatus'])
+            ->middleware('permission:reservations.status,admin')->name('tables.status');
+        Route::post('tables/{table}/toggle', [TableController::class, 'toggle'])
+            ->middleware('permission:reservations.manage,admin')->name('tables.toggle');
 });

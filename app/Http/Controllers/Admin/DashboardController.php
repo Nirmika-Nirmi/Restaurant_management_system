@@ -87,5 +87,13 @@ class DashboardController extends Controller
             'topItems'       => $topItems,
             'recent'         => $recent,
         ]);
+
+                $pages = [
+            'dashboard.view' => 'admin.dashboard',
+            'orders.view'    => 'admin.orders',
+            'menu.view'      => 'admin.menu',
+            'customers.view' => 'admin.customers',
+            'users.view'     => 'admin.users',
+        ];
     }
 }

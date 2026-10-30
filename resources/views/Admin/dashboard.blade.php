@@ -76,7 +76,7 @@ tr:last-child td { border-bottom: 0; }
   $money = fn ($v) => 'LKR ' . number_format((float) $v, 2);
 @endphp
 
-{{--   Welcome   --}}
+
 <div class="welcome">
   <div>
     <h2>Welcome, {{ $admin->full_name }}</h2>
@@ -85,7 +85,7 @@ tr:last-child td { border-bottom: 0; }
   <span class="role-chip">{{ str_replace('_', ' ', $admin->role->name ?? 'admin') }}</span>
 </div>
 
-{{--   Stat tiles   --}}
+
 <section class="stats">
   <div class="stat primary">
     <div class="label">Today's revenue</div>
@@ -124,7 +124,7 @@ tr:last-child td { border-bottom: 0; }
   </div>
 </section>
 
-{{--   Chart + best sellers   --}}
+
 <section class="grid-2">
   <div class="panel">
     <div class="panel-head"><h2>Revenue, last 7 days</h2></div>

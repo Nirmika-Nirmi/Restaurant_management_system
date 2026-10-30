@@ -57,7 +57,7 @@ tr:last-child td { border-bottom: 0; }
 
 <div class="detail-grid">
 
-  {{--   Profile   --}}
+
   <div>
     <div class="panel">
       <div class="panel-head">
@@ -110,7 +110,7 @@ tr:last-child td { border-bottom: 0; }
     </div>
   </div>
 
-  {{--   Orders   --}}
+
   <div class="panel">
     <div class="panel-head"><h2>Recent orders</h2></div>
 

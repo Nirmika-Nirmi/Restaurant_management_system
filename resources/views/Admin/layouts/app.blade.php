@@ -77,7 +77,7 @@ a { color: var(--red); }
 <body>
 <div class="shell">
 
-  {{-- Common sidebar for every admin page --}}
+
   @include('admin.partials.sidebar')
 
   <div class="main">
