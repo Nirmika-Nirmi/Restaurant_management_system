@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin login | China Town</title>
+<title>Admin login | Golden Dragon</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,7 +108,7 @@ body {
 
     <div class="brand">
       <span class="brand-small">MyBatticaloa</span>
-      <span class="brand-big">China Town</span>
+      <span class="brand-big">Golden Dragon</span>
     </div>
 
     {{-- Error alert --}}

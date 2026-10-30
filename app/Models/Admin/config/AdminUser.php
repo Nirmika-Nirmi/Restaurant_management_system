@@ -2,19 +2,19 @@
 
 namespace App\Models\Admin\Config;
 
-use App\Models\Admin\Config\Role;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class AdminUser extends Authenticatable
 {
-    use Notifiable;
+    use HasRoles, Notifiable;
+
+    protected string $guard_name = 'admin';
 
     protected $table = 'admin_users';
 
     protected $fillable = [
-        'role_id',
         'full_name',
         'email',
         'phone',
@@ -32,7 +32,6 @@ class AdminUser extends Authenticatable
         'last_login_at' => 'datetime',
     ];
 
-    // password column name is password_hash, not password
     public function getAuthPassword(): string
     {
         return $this->password_hash;
@@ -43,28 +42,8 @@ class AdminUser extends Authenticatable
         return 'password_hash';
     }
 
-    // admin_users has no remember_token column
-    public function getRememberTokenName()
+    public function getRememberTokenName(): ?string
     {
-        return '';
-    }
-
-    public function role(): BelongsTo
-    {
-        return $this->belongsTo(Role::class, 'role_id');
-    }
-
-    public function hasRole(string $name): bool
-    {
-        return $this->role && $this->role->name === $name;
-    }
-
-    public function hasPermission(string $code): bool
-    {
-        if ($this->hasRole('super_admin')) {
-            return true;
-        }
-
-        return $this->role && $this->role->hasPermission($code);
+        return null;
     }
 }
